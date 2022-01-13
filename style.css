@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+ }
+body {
+    height: 100vh;
+    background: #E3EDF7;
+}
+
+.calculatorContainer {
+    height: 100%;
+    width: 100%;
+}
+
+.viewPreviousOperations {
+    height: 25%;
+}
+
+.viewCurrentOperations {
+    height: 15%;
+    font-size: 12vw;
+    text-align: end;
+}
+
+.buttons {
+    height: 60%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 2.8vw;
+    grid-row-gap: 2.8vw;
+}
+
+ .zero {
+    grid-column: 1/3;
+    width: 42.8vw;
+    border-radius: 4.5vw;
+}
+
+button {
+    width: 20vw;
+    height: 20vw;
+    border: none;
+    box-shadow: 4px 4px 8px rgba(139, 139, 156, 0.4), -4px -4px 8px #ECF3FB;
+    border-radius: 25%;
+    transition: 300ms;
+}
+
+button:hover {
+    box-shadow: inset 4px 4px 8px rgba(139, 139, 156, 0.4), inset -4px -4px 8px #ECF3FB;
+}
+
+.numberButton {
+    background: #E3EDF7;
+}
+
+.topButton {
+    background: #EAF4FE;
+}
+
+.operationButton {
+    background: #D7E2F6;
+}
+
+h1 {
+    background: #1F1F1F;
+    font-size: 10vw;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.topButton > h1 {
+background-image: 
+linear-gradient(146.24deg, #6171D9 1.71%, rgba(240, 240, 240, 1) 99.92%);
+}
+
+.operationButton > h1 {
+    background-image:
+linear-gradient(146.24deg, #00E0FF 25%,  rgba(244, 244, 244, 1) 87.54%);
+
+ }
+
+.equal > h1 {
+    background-image:
+     linear-gradient(173.96deg, #FF0000 3.79%, rgba(244, 244, 244, 1) 95.22%);
+}
