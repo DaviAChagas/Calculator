@@ -1,6 +1,7 @@
 * {
     margin: 0;
  }
+
 body {
     height: 100vh;
     background: #E3EDF7;
@@ -13,13 +14,27 @@ body {
 
 .viewPreviousOperations {
     height: 25%;
+    font-size: 6vw;
+    text-align: end;
+    color: #696666;
+}
+
+li{
+    list-style: none
 }
 
 .viewCurrentOperations {
     height: 15%;
     font-size: 12vw;
     text-align: end;
+    color: #1F1F1F;
 }
+
+.viewPreviousOperations, .viewCurrentOperations {
+    font-family: 'Mulish', sans-serif;
+    overflow-y: scroll;
+}
+
 
 .buttons {
     height: 60%;
@@ -67,6 +82,7 @@ h1 {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    font-family: 'Mukta Mahee', sans-serif;
 }
 
 .topButton > h1 {
@@ -77,10 +93,21 @@ linear-gradient(146.24deg, #6171D9 1.71%, rgba(240, 240, 240, 1) 99.92%);
 .operationButton > h1 {
     background-image:
 linear-gradient(146.24deg, #00E0FF 25%,  rgba(244, 244, 244, 1) 87.54%);
+font-size: 11.5vw;
 
  }
 
 .equal > h1 {
     background-image:
      linear-gradient(173.96deg, #FF0000 3.79%, rgba(244, 244, 244, 1) 95.22%);
+}
+
+.delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete > img {
+    width: 50%;
 }
