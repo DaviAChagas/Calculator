@@ -1,16 +1,84 @@
+:root {
+    --whiteMode-bg: #E3EDF7;
+    --whiteMode-top: #EAF4FE;
+    --whiteMode-operation: #D7E2F6;
+}
+
+
 * {
     margin: 0;
  }
+
 
 body {
     height: 100vh;
     background: #E3EDF7;
 }
 
+
 .calculatorContainer {
     height: 100%;
     width: 100%;
 }
+
+li{
+    list-style: none
+}
+
+
+h1 {
+    background: #1F1F1F;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Mukta Mahee', sans-serif;
+}
+
+.viewPreviousOperations, .viewCurrentOperations {
+    font-family: 'Mulish', sans-serif;
+    overflow-y: scroll;
+
+}
+
+.topButton > h1 {
+    background-image: 
+    linear-gradient(146.24deg, #6171D9 1.71%, rgba(240, 240, 240, 1) 99.92%);
+}
+    
+.operationButton > h1 {
+        background-image:
+    linear-gradient(146.24deg, #00E0FF 25%,  rgba(244, 244, 244, 1) 87.54%);
+    
+     }
+    
+.equal > h1 {
+        background-image:
+         linear-gradient(173.96deg, #FF0000 3.79%, rgba(244, 244, 244, 1) 95.22%);
+    }
+
+
+.delete {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+   /* Hide scrollbar for Chrome, Safari and Opera */
+.viewPreviousOperations::-webkit-scrollbar, .viewCurrentOperations::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .viewPreviousOperations, .viewCurrentOperations {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  } 
+
+@media only screen and (max-width: 700px) {
+
+.desktopOnly {
+        display: none;
+    }
 
 .viewPreviousOperations {
     height: 25%;
@@ -19,9 +87,6 @@ body {
     color: #696666;
 }
 
-li{
-    list-style: none
-}
 
 .viewCurrentOperations {
     height: 15%;
@@ -29,12 +94,6 @@ li{
     text-align: end;
     color: #1F1F1F;
 }
-
-.viewPreviousOperations, .viewCurrentOperations {
-    font-family: 'Mulish', sans-serif;
-    overflow-y: scroll;
-}
-
 
 .buttons {
     height: 60%;
@@ -77,37 +136,93 @@ button:hover {
 }
 
 h1 {
-    background: #1F1F1F;
     font-size: 10vw;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    font-family: 'Mukta Mahee', sans-serif;
-}
-
-.topButton > h1 {
-background-image: 
-linear-gradient(146.24deg, #6171D9 1.71%, rgba(240, 240, 240, 1) 99.92%);
-}
-
-.operationButton > h1 {
-    background-image:
-linear-gradient(146.24deg, #00E0FF 25%,  rgba(244, 244, 244, 1) 87.54%);
-font-size: 11.5vw;
-
- }
-
-.equal > h1 {
-    background-image:
-     linear-gradient(173.96deg, #FF0000 3.79%, rgba(244, 244, 244, 1) 95.22%);
-}
-
-.delete {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .delete > img {
     width: 50%;
+}
+
+}
+
+
+@media only screen and (min-width: 700px) {
+
+.calculatorContainer {
+    display: grid;
+    grid-template-columns: 80vw 20vw;
+    grid-template-rows: 25vh 75vh;
+}
+
+.viewCurrentOperations {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    margin: 0 5vw 0 6vw;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    font-size: 2.8vw;
+}
+
+.viewPreviousOperations {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    margin: 3vh 2vw 7vh 0;
+    padding: 1vh 1vw 1vh 1vw;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 1.5vw;
+
+    box-shadow: inset 4px 4px 8px rgba(174, 174, 192, 0.4), inset -4px -4px 8px #ECF3FB;
+    border-radius: 16px;
+}
+
+.buttons {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    margin: 3vh 3vw 7vh 5vw;
+    padding: 1vh 2vw 1vh 2vw;
+    grid-gap: 1vw 2vw;
+}
+
+button {
+border: none;
+border-radius: 16px;
+box-shadow: 4px 4px 8px rgba(174, 174, 192, 0.4), -4px -4px 8px #ECF3FB;
+}
+
+button:hover {
+    box-shadow: 4px 4px 17.5px rgba(174, 174, 192, 0.4), -4px -4px 17.5px #ECF3FB;
+}
+
+button:active {
+    box-shadow: inset 4px 4px 8px rgba(174, 174, 192, 0.4), inset -4px -4px 8px #ECF3FB;
+}
+
+.topButton {
+    background: var(--whiteMode-top);
+}
+
+.numberButton {
+    background-color: transparent;
+}
+
+.operationButton {
+    background: var(--whiteMode-operation);
+}
+
+h1 {
+    font-size: 2vw;
+}
+
+.delete > img {
+    width: 2vw;
+}
+
 }
