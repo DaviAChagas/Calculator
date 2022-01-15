@@ -54,6 +54,7 @@ equalButton.addEventListener('click', () => {
     calculation = calculation.map(item => item === '×' ? '*' : item);
     calculation = calculation.map(item => item === '÷' ? '/' : item);
     calculation = calculation.map(item => item === '–' ? '-' : item);
+    calculation = calculation.map(item => item === '%' ? '/100' : item);
 
     result = eval(calculation.join(' '))
     display.textContent = result
