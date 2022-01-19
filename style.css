@@ -1,18 +1,53 @@
 :root {
-    --whiteMode-bg: #E3EDF7;
-    --whiteMode-top: #EAF4FE;
-    --whiteMode-operation: #D7E2F6;
+    --bg: #E3EDF7;
+    --top: #EAF4FE;
+    --operation: #D7E2F6;
+    --fontColor: #1F1F1F;
+    --boxShadow: 4px 4px 8px rgba(139, 139, 156, 0.4), -4px -4px 8px #ECF3FB;
+    --boxShadowActivated: inset 4px 4px 8px rgba(139, 139, 156, 0.4), inset -4px -4px 8px #ECF3FB;
+    --boxShadowHover: 4px 4px 17.5px rgba(174, 174, 192, 0.4), -4px -4px 17.5px #ECF3FB;
+    --boxShadowPreviousOperations: inset 4px 4px 8px rgba(174, 174, 192, 0.4), inset -4px -4px 8px #ECF3FB;
 }
 
 
+input[type=checkbox] {
+    visibility: hidden;
+  }
+
+  .checkBoxTheme {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 2vh;
+    width: 3vh;
+}
+
+  .checkBoxTheme label {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    transition: all .5s ease;
+    cursor: pointer;
+    position: absolute;
+    top: -2px;
+    left: -3px;
+  }
+
+  .checkBoxTheme input[type=checkbox]:checked + label {
+    left: 27px;
+  }
+
+  
 * {
     margin: 0;
+    transition: background 100ms;
  }
 
 
 body {
     height: 100vh;
-    background: #E3EDF7;
+    background: var(--bg);
 }
 
 
@@ -27,7 +62,7 @@ li{
 
 
 h1 {
-    background: #1F1F1F;
+    background: var(--fontColor);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -92,7 +127,7 @@ h1 {
     height: 15%;
     font-size: 12vw;
     text-align: end;
-    color: #1F1F1F;
+    color: var(--fontColor);
 }
 
 .buttons {
@@ -114,25 +149,25 @@ button {
     width: 20vw;
     height: 20vw;
     border: none;
-    box-shadow: 4px 4px 8px rgba(139, 139, 156, 0.4), -4px -4px 8px #ECF3FB;
+    box-shadow: var(--boxShadow);
     border-radius: 25%;
     transition: 300ms;
 }
 
 button:hover {
-    box-shadow: inset 4px 4px 8px rgba(139, 139, 156, 0.4), inset -4px -4px 8px #ECF3FB;
+    box-shadow: var(--boxShadowActivated)
 }
 
 .numberButton {
-    background: #E3EDF7;
+    background: transparent;
 }
 
 .topButton {
-    background: #EAF4FE;
+    background: var(--top);
 }
 
 .operationButton {
-    background: #D7E2F6;
+    background: var(--operation);
 }
 
 h1 {
@@ -154,6 +189,15 @@ h1 {
     grid-template-rows: 25vh 75vh;
 }
 
+.checkBoxTheme {
+    top: 20px;
+    left: 20px;
+}
+
+.checkBoxTheme img {
+    transform: scale(1.25);
+}
+
 .viewCurrentOperations {
     grid-column: 1/2;
     grid-row: 1/2;
@@ -162,6 +206,7 @@ h1 {
     align-items: flex-end;
     justify-content: end;
     font-size: 2.8vw;
+    color: var(--fontColor);
 }
 
 .viewPreviousOperations {
@@ -169,6 +214,7 @@ h1 {
     grid-row: 2/3;
     margin: 3vh 2vw 7vh 0;
     padding: 1vh 1vw 1vh 1vw;
+    color: #696666;
 
     display: flex;
     align-items: center;
@@ -176,7 +222,7 @@ h1 {
     justify-content: flex-end;
     font-size: 1.5vw;
 
-    box-shadow: inset 4px 4px 8px rgba(174, 174, 192, 0.4), inset -4px -4px 8px #ECF3FB;
+    box-shadow: var(--boxShadowPreviousOperations);
     border-radius: 16px;
 }
 
@@ -194,19 +240,20 @@ h1 {
 button {
 border: none;
 border-radius: 16px;
-box-shadow: 4px 4px 8px rgba(174, 174, 192, 0.4), -4px -4px 8px #ECF3FB;
+box-shadow: var(--boxShadow)
 }
 
 button:hover {
-    box-shadow: 4px 4px 17.5px rgba(174, 174, 192, 0.4), -4px -4px 17.5px #ECF3FB;
+    box-shadow: var(--boxShadowHover)
 }
 
 button:active {
-    box-shadow: inset 4px 4px 8px rgba(174, 174, 192, 0.4), inset -4px -4px 8px #ECF3FB;
+    box-shadow: var(--boxShadowActivated)
+
 }
 
 .topButton {
-    background: var(--whiteMode-top);
+    background: var(--top);
 }
 
 .numberButton {
@@ -214,8 +261,9 @@ button:active {
 }
 
 .operationButton {
-    background: var(--whiteMode-operation);
+    background: var(--operation);
 }
+
 
 h1 {
     font-size: 2vw;
