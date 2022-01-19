@@ -1,4 +1,6 @@
 //consts that query HTML elements, like buttons and divs that works as displays
+const html = document.querySelector('html')
+const checkBox = document.querySelector('input[name=theme]')
 const viewableButtons = document.querySelectorAll('.viewable')
 const allClearButton = document.querySelector('.allClear')
 const deleteButton = document.querySelector('.delete')
@@ -13,6 +15,65 @@ let viewCurrentOperationContent = ""
 let calculation, result, newCalculation
 
 let operationsHistory = [], historyList
+
+
+//Swicth Mode algorithm (White -> Dark)
+let getStyle = (element, style) => 
+    window
+        .getComputedStyle(element)
+        .getPropertyValue(style)
+
+
+let whiteMode = {
+    bg: getStyle(html, '--bg'),
+    top: getStyle(html, '--top'),
+    operation: getStyle(html, '--operation'),
+    fontColor: getStyle(html, '--fontColor'),
+    boxShadow: getStyle(html, '--boxShadow'),
+    boxShadowActivated: getStyle(html, '--boxShadowActived'),
+    boxShadowHover: getStyle(html, '--boxShadowHover'),
+    boxShadowPreviousOperations: getStyle(html, '--boxShadowPreviousOperations')
+
+}
+
+let darkMode = {
+    bg: '#1F1F1F',
+    top: '#262626',
+    operation: '#13141A',
+    fontColor: '#E3EDF7',
+    boxShadow: '4px 4px 8px rgba(6, 6, 6, 0.4), -4px -4px 8px #2E2E2E',
+    boxShadowActivated: 'inset 4px 4px 8px rgba(6, 6, 6, 0.4), inset -4px -4px 8px #252525',
+    boxShadowHover: '4px 4px 8px rgba(6, 6, 6, 0.4), -4px -4px 8px #383636',
+    boxShadowPreviousOperations: 'inset 4px 4px 8px rgba(6, 6, 6, 0.25), inset -4px -4px 8px rgba(54, 53, 53, 0.25)'
+}
+
+let transformKey = key => `--${key}`
+
+
+let darkModeActivated = false
+document.querySelector('img').addEventListener('click', (e) => {
+    darkModeActivated = darkModeActivated === false ? true : false
+
+    darkModeActivated ?
+    e.target.src = 'icons/whiteModeMoon.svg': 
+    e.target.src = 'icons/darkModeMoon.svg'
+
+    
+}) 
+
+let changeColors = (colors) => {
+    Object.keys(colors).map(key => 
+        html.style.setProperty(transformKey(key), colors[key]) 
+    )
+}
+
+
+checkBox.addEventListener("change", ({target}) => {
+    target.checked ? changeColors(darkMode) : changeColors(whiteMode)
+})
+
+//End of swicth mode algorithm
+
 
 //getNewOperators replace all the classic operators to js operators
 let getNewOperators = () => {
@@ -55,9 +116,7 @@ let getTrigonometricValue = () => {
     calculation = calculation.map((item, index) => item === 'tan' ?
     `${Math.tan(getRadiansValue(index))}`: item);
 
-    console.log(calculation)
 }
-
 
 
 let getHistoryContent = () => {
